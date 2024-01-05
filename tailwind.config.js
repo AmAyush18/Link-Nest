@@ -7,11 +7,11 @@ export default {
   theme: {
     colors: {
       transparent: 'transparent',
-      'cream': '#F4F1DE',
-      'orange': '#E07A5F',
-      'blue': '#3D405B',
-      'green': '#81B29A',
-      'beize': '#F2CC8F'
+      'cream': '#EFD6AC',
+      'orange': '#C44900',
+      'green': '#183A37',
+      'dark-green': '#04151F',
+      'violet': '#432534'
     },
     extend: {},
   },
