@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 
@@ -9,9 +10,35 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
+
+    if(password !== confirmPassword){
+      toast.error("Passwords don't match");
+      setPassword('');
+      setConfirmPassword('');
+      return;
+    }
+
+    try{
+      fetch('https://link-nest-server.onrender.com/api/v1/registration', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+          toast.success("Welcome Back!") // Handle the response as needed
+        })
+        .catch((error) => {
+          toast.error('Error during signup:', error);
+        });
+    } catch(err){
+      toast.error("Please Try Again", err);
+    }
   }
 
   return (
@@ -104,6 +131,7 @@ const Signup = () => {
             </form>
         </div>
       </div>
+      <Toaster position='top-center' reverseOrder={false} />
     </div>
   )
 }
