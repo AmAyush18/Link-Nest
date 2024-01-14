@@ -5,6 +5,7 @@ import Layout from './Layout'
 import { About, Collections, Home, Login, Signup } from './components'
 
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import Collection from './components/Collection'
 
 const Root = () => (
   <Router>
@@ -13,6 +14,7 @@ const Root = () => (
         <Route path='' element={<Home />} />
         <Route path='about' element={<About />} />
         <Route path='collections' element={<Collections />} />
+        <Route path='collection/:id' element={<Collection />} />
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<Signup />} />
       </Route>
